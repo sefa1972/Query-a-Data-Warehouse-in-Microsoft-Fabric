@@ -29,11 +29,16 @@ Microsoft Fabric trial account
  - Run sample queries:
    -- Monthly trips and revenue
 SELECT 
-  D.MonthName, 
-  COUNT(*) AS TotalTrips, 
-  SUM(T.TotalAmount) AS TotalRevenue 
+  D.MonthName,
+ 
+  COUNT(*) AS TotalTrips,
+  
+  SUM(T.TotalAmount) AS TotalRevenue
+  
 FROM dbo.Trip AS T
+
 JOIN dbo.[Date] AS D ON T.[DateID]=D.[DateID]
+
 GROUP BY D.MonthName;
 
 # 4. Verify Data Consistency
@@ -47,13 +52,21 @@ SELECT COUNT(*) FROM dbo.Trip WHERE TripDurationSeconds < 0;
 # 5. Create Views
 Save filtered queries as views:
 CREATE VIEW vw_JanTrip AS
-SELECT 
-  D.DayName, 
-  AVG(T.TripDurationSeconds) AS AvgDuration, 
-  AVG(T.TripDistanceMiles) AS AvgDistance 
+
+SELECT
+
+  D.DayName,
+  
+  AVG(T.TripDurationSeconds) AS AvgDuration,
+  
+  AVG(T.TripDistanceMiles) AS AvgDistance
+  
 FROM dbo.Trip AS T
+
 JOIN dbo.[Date] AS D ON T.[DateID]=D.[DateID]
+
 WHERE D.Month = 1
+
 GROUP BY D.DayName;
 
 # 6. Clean Up Resources
