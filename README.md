@@ -27,7 +27,9 @@ Microsoft Fabric trial account
  - Use "New SQL query" to create queries
 
  - Run sample queries:
+   
    -- Monthly trips and revenue
+   
 SELECT 
   D.MonthName,
  
@@ -43,14 +45,18 @@ GROUP BY D.MonthName;
 
 # 4. Verify Data Consistency
 Check for data anomalies:
+
 -- Trips longer than 24 hours
+
 SELECT COUNT(*) FROM dbo.Trip WHERE TripDurationSeconds > 86400;
 
 -- Trips with negative duration
+
 SELECT COUNT(*) FROM dbo.Trip WHERE TripDurationSeconds < 0;
 
 # 5. Create Views
 Save filtered queries as views:
+
 CREATE VIEW vw_JanTrip AS
 
 SELECT
